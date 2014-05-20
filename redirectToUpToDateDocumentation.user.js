@@ -12,5 +12,18 @@
 	var DocumentationRedirect = function () {
 	};
 
+	DocumentationRedirect.prototype.ifPageExists = function (url, callback) {
+
+		var request = new XMLHttpRequest();
+		request.open('HEAD', url, true);
+		request.timeout = 15000; // 15 seconds
+		request.onload = function () {
+			if (request.status < 400) {
+				callback();
+			}
+		};
+		request.send();
+	};
+
 	window.DocumentationRedirect = new DocumentationRedirect();
 })();
