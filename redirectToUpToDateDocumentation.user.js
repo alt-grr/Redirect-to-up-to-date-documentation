@@ -4,6 +4,8 @@
 // @description Detects if currently viewed online documentation page is the most recent version available, and if not, redirects user to the latest version.
 // @version     1.0.0
 // @match       *://docs.oracle.com/javase/*
+// @match       *://wiki.eclipse.org/Jetty*
+// @match       *://www.eclipse.org/jetty/documentation*
 // @match       *://docs.spring.io/*
 // ==/UserScript==
 
@@ -19,6 +21,16 @@
 			},
 			rewriteUrl: function (url) {
 				return url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
+			}
+		},
+		jetty: {
+			isOutdatedDocumentationPage: function (url) {
+				var matches = url.match(/^http(s)?:\/\/wiki\.eclipse\.org\/Jetty/);
+				return matches !== null &&
+					document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1];
+			},
+			rewriteUrl: function (url) {
+				return document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1].href;
 			}
 		},
 		springFramework: {
