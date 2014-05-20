@@ -5,7 +5,6 @@
 // @version     1.0.0
 // @match       *://docs.oracle.com/javase/*
 // @match       *://wiki.eclipse.org/Jetty*
-// @match       *://www.eclipse.org/jetty/documentation*
 // @match       *://docs.spring.io/*
 // ==/UserScript==
 
@@ -63,15 +62,15 @@
 
 	DocumentationRedirect.prototype.ifPageExists = function (url, callback) {
 
-		var request = new XMLHttpRequest();
-		request.open('HEAD', url, true);
-		request.timeout = 15000; // 15 seconds
-		request.onload = function () {
-			if (request.status < 400) {
-				callback(url);
+		GM_xmlhttpRequest({
+			method: 'HEAD',
+			url: url,
+			onload: function (response) {
+				if (response.status < 400) {
+					callback(url);
+				}
 			}
-		};
-		request.send();
+		});
 	};
 
 	window.DocumentationRedirect = new DocumentationRedirect();
