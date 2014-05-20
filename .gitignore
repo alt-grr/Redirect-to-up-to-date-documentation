@@ -1,0 +1,11 @@
+# IntelliJ IDEA
+/.idea/copyright/*
+/.idea/dictionaries/*
+/.idea/scopes/*
+
+/.idea/misc.xml
+/.idea/uiDesigner.xml
+/.idea/workspace.xml
+
+# Windows
+Thumbs.db
