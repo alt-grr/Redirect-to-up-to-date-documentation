@@ -3,13 +3,38 @@
 // @namespace   sieradzki.it
 // @description Detects if currently viewed online documentation page is the most recent version available, and if not, redirects user to the latest version.
 // @version     1.0.0
-// @match       *://*/*
+// @match       *://docs.oracle.com/javase/*
 // ==/UserScript==
 
 (function () {
 	'use strict';
 
+	var documentations = {
+		javaSE: {
+			currentVersion: '8',
+			isOutdatedDocumentationPage: function (url) {
+				var matches = url.match(/^http(s)?:\/\/docs\.oracle\.com\/javase\/([0-9\.]+)\/docs\/api\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/'+ this.currentVersion + '/docs/api/');
+			}
+		}
+	};
+
 	var DocumentationRedirect = function () {
+
+		for (var key in documentations) {
+			if (documentations[key].isOutdatedDocumentationPage(window.location.href)) {
+				var rewrittenUrl = documentations[key].rewriteUrl(window.location.href);
+
+				this.ifPageExists(rewrittenUrl, function (url) {
+					window.location.replace(url);
+				});
+
+				break;
+			}
+		}
 	};
 
 	DocumentationRedirect.prototype.ifPageExists = function (url, callback) {
@@ -19,7 +44,7 @@
 		request.timeout = 15000; // 15 seconds
 		request.onload = function () {
 			if (request.status < 400) {
-				callback();
+				callback(url);
 			}
 		};
 		request.send();
