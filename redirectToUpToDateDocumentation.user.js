@@ -15,7 +15,7 @@
 	var documentations = {
 		javaSE: {
 			currentVersion: '8',
-			isOutdatedDocumentationPage: function (url) {
+			isDocumentationPageOutdated: function (url) {
 				var matches = url.match(/^http(s)?:\/\/docs\.oracle\.com\/javase\/([0-9\.]+)\/docs\/api\//);
 				return matches !== null && matches[2] !== this.currentVersion;
 			},
@@ -24,7 +24,7 @@
 			}
 		},
 		jetty: {
-			isOutdatedDocumentationPage: function (url) {
+			isDocumentationPageOutdated: function (url) {
 				var matches = url.match(/^http(s)?:\/\/wiki\.eclipse\.org\/Jetty/);
 				return matches !== null &&
 					document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1];
@@ -35,7 +35,7 @@
 		},
 		springFramework: {
 			currentVersion: 'current',
-			isOutdatedDocumentationPage: function (url) {
+			isDocumentationPageOutdated: function (url) {
 				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\/docs\/([0-9\.A-Z]+)\/(javadoc\-)?api\//);
 				return matches !== null && matches[2] !== this.currentVersion;
 			},
@@ -49,7 +49,7 @@
 	var DocumentationRedirect = function () {
 
 		for (var key in documentations) {
-			if (documentations[key].isOutdatedDocumentationPage(window.location.href)) {
+			if (documentations[key].isDocumentationPageOutdated(window.location.href)) {
 				var rewrittenUrl = documentations[key].rewriteUrl(window.location.href);
 
 				this.ifPageExists(rewrittenUrl, function (url) {
