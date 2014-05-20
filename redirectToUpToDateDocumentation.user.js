@@ -29,7 +29,7 @@
 				return matches !== null &&
 					document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1];
 			},
-			rewriteUrl: function (url) {
+			rewriteUrl: function () {
 				return document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1].href;
 			}
 		},
