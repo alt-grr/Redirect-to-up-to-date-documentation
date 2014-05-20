@@ -22,7 +22,7 @@
 			}
 		},
 		springFramework: {
-			currentVersion: '4.0.5.RELEASE',
+			currentVersion: 'current',
 			isOutdatedDocumentationPage: function (url) {
 				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\/docs\/([0-9\.A-Z]+)\/(javadoc\-)?api\//);
 				return matches !== null && matches[2] !== this.currentVersion;
