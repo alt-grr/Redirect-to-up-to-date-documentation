@@ -35,11 +35,11 @@
 		springFramework: {
 			currentVersion: 'current',
 			isDocumentationPageOutdated: function (url) {
-				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\/docs\/([0-9\.A-Z]+)\/(javadoc\-)?api\//);
+				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\/docs\/([0-9\.A-Zx]+)\/(javadoc\-)?api\//);
 				return matches !== null && matches[2] !== this.currentVersion;
 			},
 			rewriteUrl: function (url) {
-				return url.replace(/\/docs\/([0-9\.A-Z]+)\/(javadoc\-)?api\//, '/docs/' + this.currentVersion +
+				return url.replace(/\/docs\/([0-9\.A-Zx]+)\/(javadoc\-)?api\//, '/docs/' + this.currentVersion +
 					'/javadoc-api/');
 			}
 		}
