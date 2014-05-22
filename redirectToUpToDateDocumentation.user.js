@@ -97,6 +97,8 @@
 				if (documentations[key].isDocumentationPageOutdated(window.location.href)) {
 					var rewrittenUrl = documentations[key].rewriteUrl(window.location.href);
 
+					// In newer version of documentation e.g. current viewed class could be permanently deleted, so
+					// redirection should only occur when we are sure that target page exists
 					this.ifPageExists(rewrittenUrl, function (url) {
 						window.location.replace(url);
 					});
@@ -107,6 +109,9 @@
 		}
 	};
 
+	/**
+	 * @private
+	 */
 	DocumentationRedirect.prototype.ifPageExists = function (url, callback) {
 
 		GM_xmlhttpRequest({
