@@ -65,6 +65,17 @@
 				return url.replace(/\/docs\/([0-9\.A-Zx\-]+)\/(javadoc\-)?api\//, '/docs/' + this.currentVersion +
 					'/javadoc-api/');
 			}
+		},
+		springSecurity: {
+			currentVersion: 'current',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\-security\/site\/docs\/([0-9\.A-Zx\-]+)\/apidocs\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/site\/docs\/([0-9\.A-Zx\-]+)\/apidocs\//, '/site/docs/' + this.currentVersion +
+					'/apidocs/');
+			}
 		}
 	};
 
