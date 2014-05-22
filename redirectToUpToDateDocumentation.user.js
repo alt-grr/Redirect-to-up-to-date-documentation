@@ -49,14 +49,16 @@
 	var DocumentationRedirect = function () {
 
 		for (var key in documentations) {
-			if (documentations[key].isDocumentationPageOutdated(window.location.href)) {
-				var rewrittenUrl = documentations[key].rewriteUrl(window.location.href);
+			if (documentations.hasOwnProperty(key)) {
+				if (documentations[key].isDocumentationPageOutdated(window.location.href)) {
+					var rewrittenUrl = documentations[key].rewriteUrl(window.location.href);
 
-				this.ifPageExists(rewrittenUrl, function (url) {
-					window.location.replace(url);
-				});
+					this.ifPageExists(rewrittenUrl, function (url) {
+						window.location.replace(url);
+					});
 
-				break;
+					break;
+				}
 			}
 		}
 	};
