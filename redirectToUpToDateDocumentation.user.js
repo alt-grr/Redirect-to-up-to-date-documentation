@@ -76,6 +76,17 @@
 				return url.replace(/\/site\/docs\/([0-9\.A-Zx\-]+)\/apidocs\//, '/site/docs/' + this.currentVersion +
 					'/apidocs/');
 			}
+		},
+		springSocial: {
+			currentVersion: 'current',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\-social\/docs\/([0-9\.A-Zx\-]+)\/api(docs)?\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/docs\/([0-9\.A-Zx\-]+)\/api(docs)?\//, '/docs/' + this.currentVersion +
+					'/apidocs/');
+			}
 		}
 	};
 
