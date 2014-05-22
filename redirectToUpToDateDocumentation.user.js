@@ -5,6 +5,7 @@
 // @version     1.0.0
 // @match       *://docs.oracle.com/*
 // @match       *://wiki.eclipse.org/Jetty*
+// @match       *://www.postgresql.org/docs/*
 // @match       *://docs.spring.io/*
 // ==/UserScript==
 
@@ -42,6 +43,16 @@
 			},
 			rewriteUrl: function () {
 				return document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1].href;
+			}
+		},
+		postgreSQL: {
+			currentVersion: 'current',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/www\.postgresql\.org\/docs\/([0-9\.]+)\/(static|interactive)\//);
+				return matches !== null && matches[2] !== this.currentVersion && matches[2] !== 'devel';
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/docs\/([0-9\.]+)\//, '/docs/' + this.currentVersion + '/');
 			}
 		},
 		springFramework: {
