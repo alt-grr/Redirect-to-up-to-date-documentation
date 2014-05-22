@@ -25,8 +25,9 @@
 		jetty: {
 			isDocumentationPageOutdated: function (url) {
 				var matches = url.match(/^http(s)?:\/\/wiki\.eclipse\.org\/Jetty/);
-				return matches !== null &&
-					document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1];
+				var messageBoxLinks =
+					document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]');
+				return matches !== null && messageBoxLinks !== null && messageBoxLinks.length === 2;
 			},
 			rewriteUrl: function () {
 				return document.querySelectorAll('div.messagebox a[href^="http://www.eclipse.org/jetty/documentation"]')[1].href;
