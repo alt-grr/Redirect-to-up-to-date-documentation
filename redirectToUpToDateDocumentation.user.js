@@ -3,7 +3,7 @@
 // @namespace   sieradzki.it
 // @description Detects if currently viewed online documentation page is the most recent version available, and if not, redirects user to the latest version.
 // @version     1.0.0
-// @match       *://docs.oracle.com/javase/*
+// @match       *://docs.oracle.com/*
 // @match       *://wiki.eclipse.org/Jetty*
 // @match       *://docs.spring.io/*
 // ==/UserScript==
@@ -20,6 +20,16 @@
 			},
 			rewriteUrl: function (url) {
 				return url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
+			}
+		},
+		javaEE: {
+			currentVersion: '7',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/docs\.oracle\.com\/javaee\/([0-9\.]+)\/api\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/javaee\/([0-9\.]+)\/api\//, '/javaee/' + this.currentVersion + '/api/');
 			}
 		},
 		jetty: {
