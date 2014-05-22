@@ -68,7 +68,7 @@
 		GM_xmlhttpRequest({
 			method: 'HEAD',
 			url: url,
-			onload: function (response) {
+			'onload': function (response) {
 				if (response.status < 400) {
 					callback(url);
 				}
