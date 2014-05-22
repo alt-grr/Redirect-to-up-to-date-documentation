@@ -19,7 +19,8 @@
 				return matches !== null && matches[2] !== this.currentVersion;
 			},
 			rewriteUrl: function (url) {
-				return url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
+				url = url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
+				return url.replace(/%2[8-9]|\(|\)/g, '-');
 			}
 		},
 		javaEE: {
