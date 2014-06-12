@@ -21,7 +21,10 @@
 			},
 			rewriteUrl: function (url) {
 				url = url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
-				return url.replace(/%2[8-9]|\(|\)/g, '-');
+				url = url.replace(/%2[8-9]|\(|\)/g, '-'); // "(" and ")" to "-"
+				url = url.replace(/%5B/g, ':'); // "[" to ":"
+				url = url.replace(/%5D/g, 'A'); // "]" to "A"
+				return url;
 			}
 		},
 		javaEE: {
