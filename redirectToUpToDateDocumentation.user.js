@@ -3,6 +3,8 @@
 // @namespace   sieradzki.it
 // @description Detects if currently viewed online documentation page is the most recent version available, and if not, redirects user to the latest version.
 // @version     1.0.0
+// @downloadURL https://github.com/kuc/Redirect-to-up-to-date-documentation/raw/master/redirectToUpToDateDocumentation.user.js
+
 // @match       *://docs.oracle.com/*
 // @match       *://wiki.eclipse.org/Jetty*
 // @match       *://www.postgresql.org/docs/*
