@@ -12,8 +12,7 @@ redirects you to documentation page from most recent stable release.
 ## Installation
 First ensure you have appropriate add-on installed in your browser:
 * for Chrome/Chromium - [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
-* for Firefox - [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/),
-or [Scriptish](https://addons.mozilla.org/en-US/firefox/addon/scriptish/), or equivalent
+* for Firefox - [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
 * for Opera - [Violentmonkey](https://addons.opera.com/en/extensions/details/violent-monkey/)
 
 Next download
