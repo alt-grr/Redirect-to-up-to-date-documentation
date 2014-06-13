@@ -1,4 +1,4 @@
-Redirect to up to date documentation
+Redirect to up to date documentation [![Build status for branch dev](https://travis-ci.org/kuc/Redirect-to-up-to-date-documentation.svg?branch=dev)](https://travis-ci.org/kuc/Redirect-to-up-to-date-documentation "Build status for branch dev")
 ====================================
 
 Detects if currently viewed online documentation page is the most recent version available, and if
