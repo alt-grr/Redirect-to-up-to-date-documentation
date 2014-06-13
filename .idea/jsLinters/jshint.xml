@@ -39,7 +39,7 @@
     <option node="false" />
     <option noempty="true" />
     <option nomen="false" />
-    <option nonbsp="false" />
+    <option nonbsp="true" />
     <option nonew="true" />
     <option nonstandard="false" />
     <option notypeof="false" />
@@ -59,7 +59,7 @@
     <option strict="true" />
     <option sub="false" />
     <option supernew="false" />
-    <option trailing="false" />
+    <option trailing="true" />
     <option undef="true" />
     <option unused="false" />
     <option validthis="false" />

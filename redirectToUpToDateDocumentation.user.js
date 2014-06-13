@@ -11,6 +11,10 @@
 // @match       *://docs.spring.io/*
 // ==/UserScript==
 
+/*jshint nonew:true, curly:true, noarg:true, trailing:true, loopfunc:true, forin:true, noempty:true, eqeqeq:true,
+ strict:true, undef:true, bitwise:true, newcap:false, browser:true, devel:true, nonbsp:true */
+/*global GM_xmlhttpRequest */
+
 (function () {
 	'use strict';
 
