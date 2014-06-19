@@ -64,6 +64,17 @@
 				return url.replace(/\/docs\/([0-9\.]+)\//, '/docs/' + this.currentVersion + '/');
 			}
 		},
+		springData: {
+			currentVersion: 'current',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(
+					/^http(s)?:\/\/docs\.spring\.io\/spring\-data\/([0-9a-z\-]+)\/docs\/([0-9\.A-Zx\-]+)\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/docs\/([0-9\.A-Zx\-]+)\//, '/docs/' + this.currentVersion + '/');
+			}
+		},
 		springFramework: {
 			currentVersion: 'current',
 			isDocumentationPageOutdated: function (url) {
