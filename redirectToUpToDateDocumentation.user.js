@@ -2,7 +2,7 @@
 // @name        Redirect to up to date documentation
 // @namespace   sieradzki.it
 // @description Detects if currently viewed online documentation page is the most recent version available, and if not, redirects user to the latest version.
-// @version     1.0.0
+// @version     1.0.1
 // @downloadURL https://github.com/kuc/Redirect-to-up-to-date-documentation/raw/master/redirectToUpToDateDocumentation.user.js
 
 // @grant       GM_xmlhttpRequest
