@@ -5,6 +5,8 @@
 // @version     1.0.0
 // @downloadURL https://github.com/kuc/Redirect-to-up-to-date-documentation/raw/master/redirectToUpToDateDocumentation.user.js
 
+// @grant       GM_xmlhttpRequest
+
 // @match       *://docs.oracle.com/*
 // @match       *://wiki.eclipse.org/Jetty*
 // @match       *://www.postgresql.org/docs/*
