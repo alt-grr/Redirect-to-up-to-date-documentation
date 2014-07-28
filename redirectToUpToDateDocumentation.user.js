@@ -9,6 +9,7 @@
 
 // @match       *://docs.oracle.com/*
 // @match       *://wiki.eclipse.org/Jetty*
+// @match       *://www.playframework.com/documentation/*
 // @match       *://www.postgresql.org/docs/*
 // @match       *://docs.spring.io/*
 // ==/UserScript==
@@ -64,6 +65,28 @@
 			},
 			rewriteUrl: function (url) {
 				return url.replace(/\/docs\/([0-9\.]+)\//, '/docs/' + this.currentVersion + '/');
+			}
+		},
+		playFrameworkJava: {
+			currentVersion: '2.3.x',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/www\.playframework\.com\/documentation\/([0-9\.A-Zx\-]+)\/api\/java\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/documentation\/([0-9\.A-Zx\-]+)\/api\/java\//,
+						'/documentation/' + this.currentVersion + '/api/java/');
+			}
+		},
+		playFrameworkScala: {
+			currentVersion: '2.3.x',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/www\.playframework\.com\/documentation\/([0-9\.A-Zx\-]+)\/api\/scala\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/documentation\/([0-9\.A-Zx\-]+)\/api\/scala\//,
+						'/documentation/' + this.currentVersion + '/api/scala/');
 			}
 		},
 		springData: {
