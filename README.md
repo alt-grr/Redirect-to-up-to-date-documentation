@@ -18,3 +18,14 @@ First ensure you have appropriate add-on installed in your browser:
 Next download
 [redirectToUpToDateDocumentation.user.js](https://github.com/kuc/Redirect-to-up-to-date-documentation/raw/master/redirectToUpToDateDocumentation.user.js)
 and confirm installation message.
+
+## Currently supported documentation
+* Java SE
+* Java EE
+* Jetty
+* PostgreSQL
+* Play Framework (Java and Scala documentation)
+* Spring Data
+* Spring Framework
+* Spring Security
+* Spring Social
