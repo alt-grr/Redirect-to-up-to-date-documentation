@@ -31,9 +31,9 @@
 			},
 			rewriteUrl: function (url) {
 				url = url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
-				url = url.replace(/%2[8-9]|\(|\)/g, '-'); // "(" and ")" to "-"
-				url = url.replace(/%5B/g, ':'); // "[" to ":"
-				url = url.replace(/%5D/g, 'A'); // "]" to "A"
+				url = url.replace(/%2[8-9]|\(|\)|,%20|, /g, '-'); // "(", ")", ",%20" and ", " to "-"
+				url = url.replace(/%5B|\[/g, ':'); // "[" to ":"
+				url = url.replace(/%5D|\]/g, 'A'); // "]" to "A"
 				return url;
 			}
 		},
@@ -49,9 +49,9 @@
 					/^http(s)?:\/\/download\.java\.net\/jdk([0-9\.]+)\/archive\/b([0-9\.]+)\/docs\/api\//,
 					'https://docs.oracle.com/javase/' + this.currentVersion + '/docs/api/'
 				);
-				url = url.replace(/%2[8-9]|\(|\)/g, '-'); // "(" and ")" to "-"
-				url = url.replace(/%5B/g, ':'); // "[" to ":"
-				url = url.replace(/%5D/g, 'A'); // "]" to "A"
+				url = url.replace(/%2[8-9]|\(|\)|,%20|, /g, '-'); // "(", ")", ",%20" and ", " to "-"
+				url = url.replace(/%5B|\[/g, ':'); // "[" to ":"
+				url = url.replace(/%5D|\]/g, 'A'); // "]" to "A"
 				return url;
 			}
 		},
