@@ -132,12 +132,16 @@
 		springFramework: {
 			currentVersion: 'current',
 			isDocumentationPageOutdated: function (url) {
-				var matches = url.match(/^http(s)?:\/\/docs\.spring\.io\/spring\/docs\/([0-9\.A-Zx\-]+)\/(javadoc\-)?api\//);
-				return matches !== null && matches[2] !== this.currentVersion;
+				var matches = url.match(
+					/^http(s)?:\/\/docs\.spring\.io\/spring(\-framework)?\/docs\/([0-9\.A-Zx\-]+)\/(javadoc\-)?api\//
+				);
+				return matches !== null && matches[3] !== this.currentVersion;
 			},
 			rewriteUrl: function (url) {
-				return url.replace(/\/docs\/([0-9\.A-Zx\-]+)\/(javadoc\-)?api\//, '/docs/' + this.currentVersion +
-					'/javadoc-api/');
+				return url.replace(
+					/\/spring(\-framework)?\/docs\/([0-9\.A-Zx\-]+)\/(javadoc\-)?api\//,
+					'/spring/docs/' + this.currentVersion + '/javadoc-api/'
+				);
 			}
 		},
 		springSecurity: {
