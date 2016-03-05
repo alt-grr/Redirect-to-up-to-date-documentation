@@ -46,6 +46,16 @@
 				return url.replace(/\/javaee\/([0-9\.]+)\/api\//, '/javaee/' + this.currentVersion + '/api/');
 			}
 		},
+		javaFX: {
+			currentVersion: '8',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(/^http(s)?:\/\/docs\.oracle\.com\/javafx\/([0-9\.]+)\/api\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(/\/javafx\/([0-9\.]+)\/api\//, '/javase/' + this.currentVersion + '/javafx/api/');
+			}
+		},
 		jetty: {
 			isDocumentationPageOutdated: function (url) {
 				var matches = url.match(/^http(s)?:\/\/wiki\.eclipse\.org\/Jetty/);
