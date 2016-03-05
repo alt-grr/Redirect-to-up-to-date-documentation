@@ -8,6 +8,7 @@
 // @grant       GM_xmlhttpRequest
 
 // @match       *://docs.oracle.com/*
+// @match       *://download.java.net/*
 // @match       *://wiki.eclipse.org/Jetty*
 // @match       *://www.playframework.com/documentation/*
 // @match       *://www.postgresql.org/docs/*
@@ -30,6 +31,24 @@
 			},
 			rewriteUrl: function (url) {
 				url = url.replace(/\/javase\/([0-9\.]+)\/docs\/api\//, '/javase/' + this.currentVersion + '/docs/api/');
+				url = url.replace(/%2[8-9]|\(|\)/g, '-'); // "(" and ")" to "-"
+				url = url.replace(/%5B/g, ':'); // "[" to ":"
+				url = url.replace(/%5D/g, 'A'); // "]" to "A"
+				return url;
+			}
+		},
+		javaSE_Archive: {
+			currentVersion: '8',
+			isDocumentationPageOutdated: function (url) {
+				var matches =
+					url.match(/^http(s)?:\/\/download\.java\.net\/jdk([0-9\.]+)\/archive\/b([0-9\.]+)\/docs\/api\//);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				url = url.replace(
+					/^http(s)?:\/\/download\.java\.net\/jdk([0-9\.]+)\/archive\/b([0-9\.]+)\/docs\/api\//,
+					'https://docs.oracle.com/javase/' + this.currentVersion + '/docs/api/'
+				);
 				url = url.replace(/%2[8-9]|\(|\)/g, '-'); // "(" and ")" to "-"
 				url = url.replace(/%5B/g, ':'); // "[" to ":"
 				url = url.replace(/%5D/g, 'A'); // "]" to "A"
