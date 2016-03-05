@@ -144,6 +144,21 @@
 				);
 			}
 		},
+		springFrameworkReferenceDocumentation: {
+			currentVersion: 'current',
+			isDocumentationPageOutdated: function (url) {
+				var matches = url.match(
+					/^http(s)?:\/\/docs\.spring\.io\/spring\/docs\/([0-9\.A-Zx\-]+)\/reference\//
+				);
+				return matches !== null && matches[2] !== this.currentVersion;
+			},
+			rewriteUrl: function (url) {
+				return url.replace(
+					/\/docs\/([0-9\.A-Zx\-]+)\/reference\//,
+					'/docs/' + this.currentVersion + '/spring-framework-reference/html/'
+				);
+			}
+		},
 		springSecurity: {
 			currentVersion: 'current',
 			isDocumentationPageOutdated: function (url) {
